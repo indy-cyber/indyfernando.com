@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indy Fernando — Fractional IT Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f5f2ec;
+    --warm-mid: #e8e2d6;
+    --accent: #c84b2f;
+    --accent-soft: #f0ded9;
+    --muted: #7a7468;
+    --rule: #d4cec4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+
+  /* ── PHOTO ── */
+  .hero-photo-wrap {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--rule);
+    margin-bottom: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .hero-photo-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(245, 242, 236, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-mark {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--paper) !important;
+    background: var(--ink);
+    padding: 0.55rem 1.2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--accent) !important; color: var(--paper) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    padding: 8rem 3rem 6rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--rule);
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3.2rem, 5vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    line-height: 1.3;
+  }
+
+  .hero-body {
+    font-size: 1.05rem;
+    color: var(--ink);
+    max-width: 48ch;
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 3rem;
+  }
+
+  .hero-body strong { font-weight: 500; }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--paper);
+    padding: 0.85rem 2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: #a83a20; transform: translateY(-1px); }
+
+  .btn-secondary {
+    font-size: 0.88rem;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--ink); border-color: var(--ink); }
+
+  .hero-right {
+    padding: 8rem 3rem 6rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeUp 0.9s 0.15s ease both;
+  }
+
+  .stat-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .stat-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .stat-item:first-child { border-top: 1px solid var(--rule); }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--accent);
+    min-width: 5rem;
+  }
+
+  .stat-label {
+    font-size: 0.92rem;
+    color: var(--ink);
+    font-weight: 400;
+    padding-top: 0.5rem;
+  }
+
+  .stat-sub {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── SECTION SHARED ── */
+  section { position: relative; }
+
+  .section-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 7rem 3rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 3rem;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .section-heading em { font-style: italic; color: var(--accent); }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 55ch;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 4rem;
+  }
+
+  /* ── WHAT I DO ── */
+  #services {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  #services .section-label { color: #c84b2f; }
+  #services .section-label::after { background: #c84b2f; }
+  #services .section-heading { color: var(--paper); }
+  #services .section-sub { color: rgba(245,242,236,0.55); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .service-card {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card:last-child { border-right: none; }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: rgba(255,255,255,0.03); }
+
+  .service-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  .service-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--paper);
+    margin-bottom: 0.3rem;
+    line-height: 1.15;
+  }
+
+  .service-subtitle {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(245,242,236,0.45);
+    margin-bottom: 1.5rem;
+  }
+
+  .service-body {
+    font-size: 0.9rem;
+    color: rgba(245,242,236,0.65);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .service-list {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .service-list li {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(245,242,236,0.45);
+    letter-spacing: 0.04em;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .service-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--paper); }
+
+  .exp-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .exp-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 3rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .exp-item:first-child { padding-top: 0; }
+
+  .exp-meta {
+    padding-top: 0.25rem;
+  }
+
+  .exp-company {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .exp-period {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .exp-role {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .exp-context {
+    font-size: 0.82rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+    padding: 0.5rem 0.85rem;
+    background: var(--warm-mid);
+    border-left: 2px solid var(--accent);
+    display: inline-block;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .exp-bullets li {
+    font-size: 0.92rem;
+    color: var(--ink);
+    font-weight: 300;
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--rule);
+  }
+
+  .exp-bullets li strong { font-weight: 500; }
+
+  /* ── TOOLS ── */
+  #tools { background: var(--warm-mid); }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .tool-group {
+    background: var(--warm-mid);
+    padding: 2rem 1.75rem;
+  }
+
+  .tool-group-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tool-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.65rem;
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 1px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CERTS ── */
+  .certs-row {
+    display: flex;
+    gap: 1rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .cert-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    background: var(--paper);
+  }
+
+  .cert-badge strong {
+    color: var(--ink);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+
+
+  /* ── AI STRIP ── */
+  .ai-strip {
+    background: var(--accent-soft);
+    border-top: 1px solid #e0c8c2;
+    border-bottom: 1px solid #e0c8c2;
+    padding: 3.5rem 3rem;
+  }
+
+  .ai-strip-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .ai-strip-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .ai-strip-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+
+  .ai-strip-body {
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  .ai-tool-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  .ai-tool-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.75rem;
+    background: white;
+    border: 1px solid #e0c8c2;
+    color: var(--ink);
+    border-radius: 1px;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 900px) {
+    .ai-strip-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+  }
+
+  #contact .section-label { color: var(--accent); justify-content: center; }
+  #contact .section-label::after { display: none; }
+
+  #contact .section-heading { color: var(--paper); margin-bottom: 1.25rem; }
+
+  #contact .section-sub {
+    color: rgba(245,242,236,0.5);
+    max-width: 48ch;
+    margin: 0 auto 3rem;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--paper);
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 2px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    background: rgba(200,75,47,0.12);
+    color: var(--paper);
+  }
+
+  .contact-link.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .contact-link.primary:hover {
+    background: #a83a20;
+    border-color: #a83a20;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080807;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-mark {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: rgba(245,242,236,0.25);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .footer-note {
+    font-size: 0.78rem;
+    color: rgba(245,242,236,0.2);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+  }
+
+  /* ── DIVIDER ── */
+  .rule-accent {
+    width: 3rem;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 6rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--rule); }
+    .hero-right { padding: 3rem 1.5rem 4rem; }
+    .section-inner { padding: 5rem 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+    .tools-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .tools-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-mark">Indy Fernando</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#contact" class="nav-cta">Work Together</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-photo-wrap"><img src="photo.jpg" alt="Indy Fernando"></div>
+    <p class="hero-eyebrow">Fractional IT Leader · New York, NY</p>
+    <h1 class="hero-name">Indy<br><em>Fernando</em></h1>
+    <p class="hero-title">The IT leader you need<br>before you need one full-time.</p>
+    <p class="hero-body">
+      Early-stage companies don't need a full IT department. They need someone who has <strong>built IT from scratch</strong>, automated the chaos, and kept things compliant — and can do it again for them, on their terms.
+      <br><br>
+      15+ years. Three high-growth companies. One repeatable playbook.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-primary">Let's Talk</a>
+      <a href="#experience" class="btn-secondary">See the work</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stat-stack">
+      <div class="stat-item">
+        <div class="stat-num">15+</div>
+        <div>
+          <div class="stat-label">Years building and scaling IT operations</div>
+          <div class="stat-sub">High-growth startups · Healthcare · Enterprise</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3×</div>
+        <div>
+          <div class="stat-label">SOC 2 & ISO 27001 audit cycles led end-to-end</div>
+          <div class="stat-sub">Evidence collection · Gap remediation · Auditor coordination</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0→1</div>
+        <div>
+          <div class="stat-label">IT functions built from scratch</div>
+          <div class="stat-sub">Cyera: 125 → 350+ employees in under a year</div>
+        </div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6k+</div>
+        <div>
+          <div class="stat-label">Users supported at scale (Datadog)</div>
+          <div class="stat-sub">North America lead · Global collaboration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">What I do</p>
+    <h2 class="section-heading">Three ways I can <em>help</em></h2>
+    <p class="section-sub">Every engagement starts with an honest conversation about where you are and what you actually need.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01 — Build</div>
+        <div class="service-title">Zero to IT</div>
+        <div class="service-subtitle">For companies with no IT function yet</div>
+        <p class="service-body">You're growing fast and your IT setup is still whoever-has-the-longest-tenure figuring it out. I'll build the foundation — the tools, the processes, the access controls, the documentation — so you stop losing hours to things that should just work.</p>
+        <ul class="service-list">
+          <li>SaaS stack setup and governance</li>
+          <li>Okta / identity and access management</li>
+          <li>Onboarding & offboarding workflows</li>
+          <li>Device management (Jamf / Intune)</li>
+          <li>IT policy and SOC 2 readiness</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">02 — Automate</div>
+        <div class="service-title">Clean Up the Mess</div>
+        <div class="service-subtitle">For companies with IT that's outgrown itself</div>
+        <p class="service-body">You have tools, but they don't talk to each other. Onboarding is still manual. Nobody knows who has access to what. I'll audit your stack, cut what you don't need, and automate the workflows that are eating your team's time.</p>
+        <ul class="service-list">
+          <li>SaaS audit and rationalization</li>
+          <li>Workflow automation (Zapier, Workato, Okta)</li>
+          <li>Access governance and lifecycle reviews</li>
+          <li>ITSM implementation (Jira Service Management)</li>
+          <li>Documentation and runbook creation</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">03 — Lead</div>
+        <div class="service-title">Part-Time IT Brain</div>
+        <div class="service-subtitle">For companies that need a seat at the table</div>
+        <p class="service-body">You don't need a $200K IT director yet. You need someone experienced enough to own the strategy, handle vendor relationships, show up for security reviews, and make sure IT doesn't become a liability as you scale.</p>
+        <ul class="service-list">
+          <li>Fractional IT leadership (ongoing)</li>
+          <li>Vendor management and procurement</li>
+          <li>Compliance and audit support</li>
+          <li>IT roadmap and budget planning</li>
+          <li>Cross-functional IT partnership</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- AI STRIP -->
+<div class="ai-strip">
+  <div class="ai-strip-inner">
+    <div>
+      <div class="ai-strip-label">Modern IT Practice</div>
+      <div class="ai-strip-heading">AI-native tools,<br>pragmatically applied.</div>
+    </div>
+    <div>
+      <p class="ai-strip-body">
+        I'm actively integrating AI-native tools into IT operations — from automated helpdesk triage to documentation generation and lifecycle workflow automation. I evaluate these tools the same way I evaluate any infrastructure decision: does it reduce manual work, improve reliability, and scale without adding headcount? That's the bar. If it clears it, it's in the stack.
+      </p>
+      <div class="ai-tool-row">
+        <span class="ai-tool-tag">Moveworks</span>
+        <span class="ai-tool-tag">Okta Workflows</span>
+        <span class="ai-tool-tag">Slack AI</span>
+        <span class="ai-tool-tag">AI-assisted documentation</span>
+        <span class="ai-tool-tag">Automated triage</span>
+        <span class="ai-tool-tag">Lifecycle automation</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Experience</p>
+    <h2 class="section-heading">Where I've <em>done the work</em></h2>
+    <p class="section-sub">Every claim here is something I can talk through in detail. No fluff.</p>
+
+    <div class="exp-timeline">
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-company">Ro</div>
+          <div class="exp-period">Aug 2025 — Present</div>
+        </div>
+        <div>
+          <div class="exp-role">Employee Lifecycle Lead</div>
+          <div class="exp-context">Healthcare · HIPAA-aligned · New York</div>
+          <ul class="exp-bullets">
+            <li>Own end-to-end employee lifecycle — onboarding through offboarding — in a HIPAA-aligned healthcare environment.</li>
+            <li>Administer <strong>Okta, Jamf (macOS), and Intune (Windows/VDI)</strong> for identity, endpoint compliance, and access at scale.</li>
+            <li>Automate onboarding and offboarding workflows integrating <strong>UKG (HRIS), Okta, Jamf, and Intune</strong>, eliminating manual handoffs.</li>
+            <li>Introduce access-risk reviews for provisioning flows, strengthening identity governance and audit readiness.</li>
+            <li>Use AI tooling to improve documentation and scale IT support capacity without adding headcount.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-company">Cyera</div>
+          <div class="exp-period">Sep 2023 — Oct 2024</div>
+        </div>
+        <div>
+          <div class="exp-role">IT Manager</div>
+          <div class="exp-context">Cybersecurity startup · 125 → 350+ employees · Remote-first</div>
+          <ul class="exp-bullets">
+            <li><strong>First IT hire.</strong> Built the entire IT function from scratch as the company scaled from 125 to 350+ employees in under a year.</li>
+            <li>Led <strong>SOC 2 and ISO 27001</strong> audit readiness end-to-end: control design, evidence collection, gap remediation, and auditor coordination.</li>
+            <li>Designed and deployed a Jira-based ITSM framework from scratch, standardizing support workflows and enabling request tracking.</li>
+            <li>Automated onboarding, offboarding, and access control workflows using <strong>Zapier, Workato, and Okta</strong>, meaningfully reducing manual provisioning time.</li>
+            <li>Led strategic planning for a global migration from JumpCloud to Jamf, improving device management and compliance posture.</li>
+            <li>Oversaw IT hardware and software spend, managing vendor relationships, procurement, and budget forecasting.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-company">Datadog</div>
+          <div class="exp-period">Aug 2021 — Jul 2023</div>
+        </div>
+        <div>
+          <div class="exp-role">Enterprise IT Support Manager</div>
+          <div class="exp-context">6,000+ employee org · North America lead · Global collaboration</div>
+          <ul class="exp-bullets">
+            <li>Led IT support for a global company scaling past 6,000 employees, with primary responsibility for North America and close collaboration with teams in <strong>Sydney, Dublin, Paris, and Amsterdam</strong>.</li>
+            <li>Directly managed a team of 8 IT professionals; part of a broader support organization that grew from 7 to 21.</li>
+            <li>Led a global Mac refresh of <strong>1,500+ devices</strong>, managing a $5M deployment budget and reducing device-related incidents.</li>
+            <li>Implemented <strong>Moveworks</strong> (AI-driven automation) to streamline first-line support and reduce ticket volume.</li>
+            <li>Built SLA, CSAT, and resolution-time dashboards to drive continuous service improvement across regions.</li>
+            <li>Administered <strong>Google Workspace and Jamf</strong> for global device deployment and access lifecycle management.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-company">PVH Corp.</div>
+          <div class="exp-period">Jul 2018 — Aug 2021</div>
+        </div>
+        <div>
+          <div class="exp-role">IT Support Lead → IT Service Desk Manager</div>
+          <div class="exp-context">Global fashion enterprise · 200+ retail locations</div>
+          <ul class="exp-bullets">
+            <li>Unified multiple global service desks into a single operating model, improving consistency across corporate and retail environments.</li>
+            <li>Deployed self-service portals and knowledge bases, reducing service ticket volume substantially.</li>
+            <li>Implemented SACM in <strong>ServiceNow</strong>, improving asset tracking accuracy and enforcing ITIL-aligned workflows.</li>
+            <li>Participated in infrastructure budget oversight across 200+ retail locations; negotiated vendor contracts delivering meaningful cost savings.</li>
+            <li>Started as IT Support Lead, providing white-glove support for C-suite executives and serving as IT liaison for the ServiceNow implementation, before being promoted to Service Desk Manager.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-inner">
+    <p class="section-label">Tools & Stack</p>
+    <h2 class="section-heading">What I actually <em>know</em></h2>
+    <p class="section-sub">Hands-on experience with all of these — not just checkboxes on a job description.</p>
+
+    <div class="tools-grid">
+      <div class="tool-group">
+        <div class="tool-group-label">Identity & Access</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Okta</span>
+          <span class="tool-tag">Okta Workflows</span>
+          <span class="tool-tag">Okta Governance</span>
+          <span class="tool-tag">Azure AD / Entra</span>
+          <span class="tool-tag">SCIM</span>
+          <span class="tool-tag">SSO / RBAC</span>
+          <span class="tool-tag">JumpCloud</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">Endpoint Management</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Jamf Pro</span>
+          <span class="tool-tag">Intune</span>
+          <span class="tool-tag">Apple Business Manager</span>
+          <span class="tool-tag">Windows Autopilot</span>
+          <span class="tool-tag">Kandji</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">ITSM & Productivity</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Jira Service Management</span>
+          <span class="tool-tag">ServiceNow</span>
+          <span class="tool-tag">Google Workspace</span>
+          <span class="tool-tag">Confluence</span>
+          <span class="tool-tag">Slack</span>
+          <span class="tool-tag">Zoom</span>
+          <span class="tool-tag">Moveworks</span>
+        </div>
+      </div>
+      <div class="tool-group">
+        <div class="tool-group-label">Automation & HRIS</div>
+        <div class="tool-tags">
+          <span class="tool-tag">Zapier</span>
+          <span class="tool-tag">Workato</span>
+          <span class="tool-tag">Slack Workflows</span>
+          <span class="tool-tag">Google Apps Script</span>
+          <span class="tool-tag">UKG</span>
+          <span class="tool-tag">HiBob</span>
+          <span class="tool-tag">Workday</span>
+          <span class="tool-tag">BambooHR</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="certs-row">
+      <div class="cert-badge">
+        <strong>ITIL Foundations v4</strong>
+        Certified · GR671767979IF
+      </div>
+      <div class="cert-badge">
+        <strong>BA</strong>
+        Mount Holyoke College
+      </div>
+      <div class="cert-badge">
+        <strong>SOC 2 / ISO 27001</strong>
+        Audit readiness · 3 cycles
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Work Together</p>
+    <h2 class="section-heading">Ready when <em>you are</em></h2>
+    <p class="section-sub">
+      Whether you need IT built from scratch, cleaned up, or led part-time — let's have an honest conversation about what actually makes sense for your stage.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:indy@indyfernando.com" class="contact-link primary" id="email-link">indy@indyfernando.com</a>
+      <a href="https://linkedin.com/in/indyfernando" class="contact-link" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-mark">Indy Fernando · Fractional IT Leader</span>
+  <span class="footer-note">New York, NY · Available for fractional & consulting engagements</span>
+</footer>
+
+
+<script>
+  const els = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+  // Small delay so observer fires before paint
+  setTimeout(() => els.forEach(el => observer.observe(el)), 100);
+  // Fallback: make all visible after 1.2s regardless
+  setTimeout(() => els.forEach(el => el.classList.add('visible')), 1200);
+</script>
+</body>
+</html>
